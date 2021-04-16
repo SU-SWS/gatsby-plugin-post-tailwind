@@ -23,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/SU-SWS/gatsby-plugin-post-tailwind/issues"
   },
-  "homepage": "https://github.com/SU-SWS/gatsby-plugin-post-tailwind#readme"
+  "homepage": "https://github.com/SU-SWS/gatsby-plugin-post-tailwind#readme",
+  "dependencies": {
+    "autoprefixer": "^10.2.5",
+    "fs-extra": "^9.1.0",
+    "postcss": "^8.2.10",
+    "precss": "^4.0.0",
+    "tailwindcss": "^2.1.1"
+  }
 }

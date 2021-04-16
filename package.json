@@ -1,0 +1,27 @@
+{
+  "name": "gatsby-plugin-post-tailwind",
+  "version": "1.0.0-dev",
+  "description": "Run tailwind post generation of the html files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Write tests\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SU-SWS/gatsby-plugin-post-tailwind.git"
+  },
+  "keywords": [
+    "gatsby",
+    "plugin",
+    "post-build",
+    "tailwind",
+    "purgecss",
+    "tailwindcss"
+  ],
+  "author": "Stanford Web Services",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/SU-SWS/gatsby-plugin-post-tailwind/issues"
+  },
+  "homepage": "https://github.com/SU-SWS/gatsby-plugin-post-tailwind#readme"
+}

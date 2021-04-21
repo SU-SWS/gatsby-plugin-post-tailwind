@@ -10,6 +10,12 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
   const path = dest.replace(rm, '');
   setHeadComponents([
     <link
+      key="gatsby-plugin-post-tailwind-preload"
+      href={withPrefix(path)}
+      rel="preload"
+      as="style"
+    />,
+    <link
       key="gatsby-plugin-post-tailwind"
       href={withPrefix(path)}
       rel="stylesheet"

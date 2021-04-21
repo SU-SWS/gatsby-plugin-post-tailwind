@@ -13,13 +13,14 @@ const fs = require('fs');
 const path = require('path');
 
 const fse = require('fs-extra');
+
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
 /**
  * On post build step for gatbsy builds.
  *
  * @param {*} nodeOptions
  * @param {*} pluginOptions
  */
-
 
 exports.onPostBuild = async function onPostBuild(nodeOptions, pluginOptions) {
   var _pluginOptions$config;
@@ -58,4 +59,33 @@ exports.onPostBuild = async function onPostBuild(nodeOptions, pluginOptions) {
       }
     });
   });
+};
+/**
+ * When in development, add the css file so gatsby-develop still works.
+ * 
+ */
+
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  getConfig,
+  actions
+}, pluginOptions) => {
+  // Nothing to do.
+  if (!pluginOptions.src) {
+    return;
+  } // Only run on dev builds. This might be redundant with the build step check.
+
+
+  if (activeEnv !== "development") {
+    return;
+  } // On gatsby `develop`
+
+
+  if (stage === 'develop') {
+    const absPath = path.resolve(pluginOptions.src);
+    const config = getConfig();
+    config.entry.commons.push(absPath);
+    actions.replaceWebpackConfig(config);
+  }
 };

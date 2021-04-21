@@ -18,6 +18,7 @@ exports.onRenderBody = ({
   const rm = dest.match(/.*public\//gm);
   const path = dest.replace(rm, '');
   setHeadComponents([/*#__PURE__*/React.createElement("link", {
+    key: "gatsby-plugin-post-tailwind",
     href: withPrefix(path),
     rel: "stylesheet"
   })]);

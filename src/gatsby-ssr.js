@@ -10,6 +10,7 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
   const path = dest.replace(rm, '');
   setHeadComponents([
     <link
+      key="gatsby-plugin-post-tailwind"
       href={withPrefix(path)}
       rel="stylesheet"
     />,

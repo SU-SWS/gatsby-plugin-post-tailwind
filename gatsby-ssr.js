@@ -12,6 +12,13 @@ const withPrefix = _gatsby.withAssetPrefix || _gatsby.withPrefix;
 exports.onRenderBody = ({
   setHeadComponents
 }, pluginOptions) => {
+  const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"; // Skip on development.
+
+  if (activeEnv === "development") {
+    console.log("Skipping adding head link.");
+    return;
+  }
+
   const {
     dest
   } = pluginOptions;

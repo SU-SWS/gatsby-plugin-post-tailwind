@@ -6,13 +6,12 @@ const withPrefix = withAssetPrefix || fallbackWithPrefix
 
 exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
   const { dest } = pluginOptions
-
-console.log(dest);
-
+  const rm = dest.match(/.*public\//gm);
+  const path = dest.replace(rm, '');
   setHeadComponents([
     <link
-      href={withPrefix(dest)}
+      href={withPrefix(path)}
       rel="stylesheet"
-    />
+    />,
   ])
 }

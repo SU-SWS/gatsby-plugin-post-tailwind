@@ -62,7 +62,7 @@ exports.onPostBuild = async function onPostBuild(nodeOptions, pluginOptions) {
 };
 /**
  * When in development, add the css file so gatsby-develop still works.
- * 
+ *
  */
 
 
@@ -73,7 +73,7 @@ exports.onCreateWebpackConfig = ({
 }, pluginOptions) => {
   const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"; // Skip on development.
 
-  if (activeEnv === "development") {
+  if (activeEnv !== "development") {
     return;
   } // Nothing to do.
 
@@ -83,7 +83,7 @@ exports.onCreateWebpackConfig = ({
   } // On gatsby 'develop'
 
 
-  if (stage === 'develop' || stage === 'develop-html' || stage == 'build-javascript') {
+  if (stage === 'develop' || stage === 'develop-html' || stage === 'build-javascript') {
     const absPath = path.resolve(pluginOptions.src);
     const config = getConfig();
     config.entry.commons.push(absPath);

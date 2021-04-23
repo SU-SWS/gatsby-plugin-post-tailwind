@@ -68,7 +68,7 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, actions }, pluginOptions) =
     process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
 
   // Skip on development.
-  if (activeEnv === "development") {
+  if (activeEnv !== "development") {
     return;
   }
 
@@ -81,7 +81,7 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, actions }, pluginOptions) =
   if (
     stage === 'develop' || 
     stage === 'develop-html' || 
-    stage == 'build-javascript'
+    stage === 'build-javascript'
     ) {
     const absPath = path.resolve(pluginOptions.src);
     const config = getConfig();

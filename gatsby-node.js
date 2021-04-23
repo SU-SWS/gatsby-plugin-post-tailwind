@@ -71,18 +71,19 @@ exports.onCreateWebpackConfig = ({
   getConfig,
   actions
 }, pluginOptions) => {
-  // Nothing to do.
+  const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"; // Skip on development.
+
+  if (activeEnv === "development") {
+    return;
+  } // Nothing to do.
+
+
   if (!pluginOptions.src) {
     return;
-  } // Only run on dev builds. This might be redundant with the build step check.
+  } // On gatsby 'develop'
 
 
-  if (activeEnv !== "development") {
-    return;
-  } // On gatsby `develop`
-
-
-  if (stage === 'develop') {
+  if (stage === 'develop' || stage === 'develop-html' || stage == 'build-javascript') {
     const absPath = path.resolve(pluginOptions.src);
     const config = getConfig();
     config.entry.commons.push(absPath);

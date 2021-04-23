@@ -18,6 +18,7 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
   const { dest } = pluginOptions
   const rm = dest.match(/.*public\//gm);
   const path = dest.replace(rm, '');
+
   setHeadComponents([
     <link
       key="gatsby-plugin-post-tailwind-preload"

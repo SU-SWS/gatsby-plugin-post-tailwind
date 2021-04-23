@@ -62,7 +62,7 @@ exports.onPostBuild = async function onPostBuild(nodeOptions, pluginOptions) {
 };
 /**
  * When in development, add the css file so gatsby-develop still works.
- *
+ * 
  */
 
 
@@ -83,7 +83,7 @@ exports.onCreateWebpackConfig = ({
   } // On gatsby 'develop'
 
 
-  if (stage === 'develop' || stage === 'develop-html' || stage === 'build-javascript') {
+  if (stage === 'develop') {
     const absPath = path.resolve(pluginOptions.src);
     const config = getConfig();
     config.entry.commons.push(absPath);

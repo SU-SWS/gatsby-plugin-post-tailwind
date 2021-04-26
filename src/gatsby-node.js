@@ -62,7 +62,6 @@ exports.onPostBuild = async function onPostBuild(nodeOptions, pluginOptions) {
  * 
  */
 exports.onCreateWebpackConfig = ({ stage, getConfig, actions }, pluginOptions) => {
-
   const activeEnv =
     process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
 
@@ -78,9 +77,16 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, actions }, pluginOptions) =
 
   // On gatsby 'develop'
   if (stage === 'develop')  {
-    const absPath = path.resolve(pluginOptions.src);
     const config = getConfig();
+    const absPath = path.resolve(pluginOptions.src);
+
+    // Add the css to the entry points.
     config.entry.commons.push(absPath);
+
+    // Ensure that the files get outputted.
+    config.devServer = config.devServer || {};
+    config.devServer.writeToDisk = true;
+
     actions.replaceWebpackConfig(config);
   }
 }

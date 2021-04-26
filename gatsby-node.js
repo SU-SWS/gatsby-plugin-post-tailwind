@@ -84,9 +84,13 @@ exports.onCreateWebpackConfig = ({
 
 
   if (stage === 'develop') {
-    const absPath = path.resolve(pluginOptions.src);
     const config = getConfig();
-    config.entry.commons.push(absPath);
+    const absPath = path.resolve(pluginOptions.src); // Add the css to the entry points.
+
+    config.entry.commons.push(absPath); // Ensure that the files get outputted.
+
+    config.devServer = config.devServer || {};
+    config.devServer.writeToDisk = true;
     actions.replaceWebpackConfig(config);
   }
 };
